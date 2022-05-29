@@ -1,6 +1,8 @@
+var taskArray = ["", "", "", "", "", "", "", "", ""];
+
 // display current date and time at tope of page
-var currentTime = moment().format("dddd, MMMM Do YYYY, h:mm a");
-$("#currentDay").append(currentTime); 
+var currentDate = moment().format("dddd, MMMM Do YYYY, h:mm a");
+$("#currentDay").append(currentDate); 
 
 // make task description editable on click
 $(".description").click(function() {
@@ -9,17 +11,47 @@ $(".description").click(function() {
 
 // save task description to local storage on click
 $(".saveBtn").click(function() {
-    console.log("save");
-    localStorage.setItem("task", this);
+    var tasks = $(this).siblings(".description");
+// console.log(tasks.data().timeSlot);
+    taskArray[tasks.data().timeSlot - 9] = tasks.text();
+    localStorage.setItem("tasks", JSON.stringify(taskArray));
 })
 
 // load tasks from local storage
+$(document).ready(function() {
+    taskArray = JSON.parse(localStorage.getItem("tasks"));
+    console.log(taskArray);
+    var taskDescription = $(".description").toArray();
+    taskDescription.forEach(loadTasks);
+})
+    //copy start loop for or for each loop 
+function loadTasks() {
+    $(".description")
+}
 
-// if current time after, add class future
-$(this).addClass("future")
-// if current time, add class present
-$(this).addClass("present")
-// if current time before, add class past 
-$(this).addClass("past")
+// change color relate to current time 
 
+function getHour() {
+    return parseInt(moment().format("k"));
+}
+
+function start() {
+    var taskDescription = $(".description").toArray();
+    taskDescription.forEach(setColor);
+}
+    
+function setColor(el, index) {
+    var hour = index + 9;
+    if (getHour() < hour) {
+        el.classList.add("future");
+    };
+    if (getHour() > hour) {
+        el.classList.add("past");
+    };
+    if (getHour() === hour) {
+        el.classList.add("present");
+    };
+}
+
+start();
 
