@@ -12,7 +12,7 @@ $(".description").click(function() {
 // save task description to local storage on click
 $(".saveBtn").click(function() {
     var tasks = $(this).siblings(".description");
-// console.log(tasks.data().timeSlot);
+    // console.log(tasks.data().timeSlot);
     taskArray[tasks.data().timeSlot - 9] = tasks.text();
     localStorage.setItem("tasks", JSON.stringify(taskArray));
 })
@@ -21,16 +21,15 @@ $(".saveBtn").click(function() {
 $(document).ready(function() {
     taskArray = JSON.parse(localStorage.getItem("tasks"));
     console.log(taskArray);
-    var taskDescription = $(".description").toArray();
-    taskDescription.forEach(loadTasks);
+    for (let i = 0; i < taskArray.length; i++) {
+        console.log(taskArray[i]);
+        $(".description").text(taskArray[i]); //why doesnt this work????
+    };
 })
     //copy start loop for or for each loop 
-function loadTasks() {
-    $(".description")
-}
+
 
 // change color relate to current time 
-
 function getHour() {
     return parseInt(moment().format("k"));
 }
