@@ -13,21 +13,12 @@ $(".description").click(function() {
 $(".saveBtn").click(function() {
     var tasks = $(this).siblings(".description").val();
     var hour = $(this).parent().attr("id");
-    // console.log(tasks.data().timeSlot);
-    // taskArray[tasks.data().timeSlot - 9] = tasks.text();
-    // localStorage.setItem("tasks", JSON.stringify(taskArray));
     localStorage.setItem(hour, tasks);
 })
 
 //load tasks from local storage
 $(document).ready(function() {
-    // taskArray = JSON.parse(localStorage.getItem("tasks"));
-    // console.log(taskArray);
-    // for (let i = 0; i < taskArray.length; i++) {
-    //     console.log(taskArray[i]);
-    //     $(".description").text(taskArray[i]); //why doesnt this work????
-    // };
-    
+    var nine = localStorage.getItem("nine");
     var ten = localStorage.getItem("ten");
     var eleven = localStorage.getItem("eleven");
     var twelve = localStorage.getItem("twelve");
@@ -36,13 +27,16 @@ $(document).ready(function() {
     var three = localStorage.getItem("three");
     var four = localStorage.getItem("four");
     var five = localStorage.getItem("five");
-
-    var nine = localStorage.getItem("nine");
-    console.log(nine);
-    console.log($("#nine").siblings(".description"));
-    $("#nine").siblings(".description").val(localStorage.getItem("nine"));
+    $('#nine .description').val(nine);
+    $('#ten .description').val(ten);
+    $('#eleven .description').val(eleven);
+    $('#twelve .description').val(twelve);
+    $('#one .description').val(one);
+    $('#two .description').val(two);
+    $('#three .description').val(three);
+    $('#four .description').val(four);
+    $('#five .description').val(five);
 })
-
 
 // change color relate to current time 
 function getHour() {
