@@ -28,21 +28,20 @@ $(document).ready(function() {
     //     $(".description").text(taskArray[i]); //why doesnt this work????
     // };
     
-    // var ten = localStorage.getItem("ten");
-    // var eleven = localStorage.getItem("eleven");
-    // var twelve = localStorage.getItem("twelve");
-    // var one = localStorage.getItem("one");
-    // var two = localStorage.getItem("two");
-    // var three = localStorage.getItem("three");
-    // var four = localStorage.getItem("four");
-    // var five = localStorage.getItem("five");
+    var ten = localStorage.getItem("ten");
+    var eleven = localStorage.getItem("eleven");
+    var twelve = localStorage.getItem("twelve");
+    var one = localStorage.getItem("one");
+    var two = localStorage.getItem("two");
+    var three = localStorage.getItem("three");
+    var four = localStorage.getItem("four");
+    var five = localStorage.getItem("five");
 
     var nine = localStorage.getItem("nine");
     console.log(nine);
     console.log($("#nine").siblings(".description"));
     $("#nine").siblings(".description").val(localStorage.getItem("nine"));
 })
-    //copy start loop for or for each loop 
 
 
 // change color relate to current time 
